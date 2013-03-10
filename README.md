@@ -1,0 +1,33 @@
+# Simple Statistics utility (sstats)
+
+Compute common statistic analysis on lists of numbers.
+
+# Usage
+
+Simply pipe a list of line separated numbers.
+```
+$ cat numbers.txt
+0.6046602879796196
+0.9405090880450124
+0.6645600532184904
+0.4377141871869802
+0.4246374970712657
+0.6868230728671094
+0.06563701921747622
+0.15651925473279124
+0.09696951891448456
+0.30091186058528707
+
+$ sstats < numbers.txt
+Count:  10
+Min:    0.06563701921747622
+Max:    0.9405090880450124
+Sum:    4.378941839818516
+
+$ cat numbers.txt | sstats
+Count:  10
+Min:    0.06563701921747622
+Max:    0.9405090880450124
+Sum:    4.378941839818516
+
+```
