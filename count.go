@@ -4,9 +4,13 @@ import "fmt"
 
 type Count int
 
+func NewCount(v int) *Count {
+	c := Count(v)
+	return &c
+}
+
 func (c *Count) Push(values ...float64) {
-	new_count := int(*c) + len(values)
-	*c = Count(new_count)
+	*c += Count(len(values))
 }
 
 func (c Count) Value() (float64, bool) {
@@ -14,5 +18,5 @@ func (c Count) Value() (float64, bool) {
 }
 
 func (c Count) String() string {
-	return fmt.Sprintf("Count:%v", int(c))
+	return fmt.Sprintf("Count:%d", c)
 }

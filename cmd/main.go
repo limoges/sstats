@@ -21,13 +21,10 @@ func main() {
 		return
 	}
 
-	var (
-		count = sstats.Count(0)
-		min   = sstats.Minimum{}
-		max   = sstats.Maximum{}
-		sum   = sstats.Sum(0)
-	)
-	sstats := sstats.NewSimpleStats(&count, &min, &max, &sum)
+	var s []sstats.Statistic
+	s = append(s, sstats.NewCount(0), new(sstats.Minimum), new(sstats.Maximum), sstats.NewSum(0),
+		new(sstats.Stddev), new(sstats.Variance), new(sstats.Median))
+	sstats := sstats.NewSimpleStats(s...)
 
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Split(bufio.ScanWords)
